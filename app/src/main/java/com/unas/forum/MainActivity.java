@@ -4,14 +4,26 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 
 public class MainActivity extends ActionBarActivity {
+    private WebView login;
+    String strUrl="https://account.oneplus.net/" ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        login  = (WebView) findViewById(R.id.web_engine);
+        login.getSettings().setJavaScriptEnabled(true);
+        login.loadUrl(strUrl);
+        login.setWebViewClient(new WebViewClient());
+        login.getSettings().setBuiltInZoomControls(true);
+        login.getSettings().setDefaultZoom(WebSettings.ZoomDensity.FAR);
     }
 
 
